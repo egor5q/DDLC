@@ -12,6 +12,19 @@ from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 import nltk
 nltk.download('punkt')
+nltk.download('WordNet')
+nltk.download('pros_cons')
+nltk.download('рейтер')
+nltk.download('hmm_treebank_pos_tagger')
+nltk.download('maxent_treebank_pos_tagger')
+nltk.download('universal_tagset')
+nltk.download('averaged_perceptron_tagger_ru')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('rslp')
+nltk.download('porter_test')
+nltk.download('vader_lexicon')
+nltk.download('treebank')
+nltk.download('dependency_treebank')
 
 cutes=['милая','милашка']
 monika = telebot.TeleBot(os.environ['monika'])
