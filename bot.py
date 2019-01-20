@@ -7,7 +7,6 @@ import threading
 from emoji import emojize
 from telebot import types
 from pymongo import MongoClient
-import nltk
 
 
 monika = telebot.TeleBot(os.environ['monika'])
@@ -67,13 +66,13 @@ def testt(m):
 
 @natsuki.message_handler()
 def natsukki(m):
-    ps = nltk.PorterStemmer()
-    text=nltk.sent_tokenize(m.text)
+    ps = PorterStemmer()
+    text=sent_tokenize(m.text)
     cute=0
     for ids in text:
         i=ids.lower()
         if 'нацуки' in i:
-            allwords=nltk.word_tokenize(i)
+            allwords=word_tokenize(i)
             for idss in allwords:
                 word=ps.stem(idss).split(':')[1]
                 print(word)
