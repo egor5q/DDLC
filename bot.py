@@ -7,6 +7,8 @@ import threading
 from emoji import emojize
 from telebot import types
 from pymongo import MongoClient
+from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.corpus import stopwords
 
 
 monika = telebot.TeleBot(os.environ['monika'])
