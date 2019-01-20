@@ -57,7 +57,17 @@ def createuser(id,name):
         'id':id
     }
 
+def botpolling(bot):
+  bot.polling(none_stop=True,timeout=600)
+  
 if True:
    print('7777')
-   bot.polling(none_stop=True,timeout=600)
+   t=threading.Timer(1,botpolling,args=[monika])
+   t.start()
+   t=threading.Timer(1,botpolling,args=[natsuki])
+   t.start()
+   t=threading.Timer(1,botpolling,args=[sayori])
+   t.start()
+   t=threading.Timer(1,botpolling,args=[yuri])
+   t.start()
 
