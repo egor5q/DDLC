@@ -26,6 +26,11 @@ monika_hello_basic=['Добро пожаловать в литературный
                     'весёлой Сайори, начитанной Юри и миленькой Нацуки.','Приветствую тебя в Литературном клубе. Проходи не стесняйся,'+\
                     'Нацуки уже испекла кексики к твоему приходу, а Юри сделает чай, если ты хочешь.']
 
+@monika.message_handler(content_types=['sticker'])
+def stickercatch(m):
+    monika.send_message(441399484,str(m.sticker.file_id))
+    print(m.sticker.file_id)                   
+                    
 @monika.message_handler(content_types=['new_chat_members'])
 def newchatmember(m):
    if users.find_one({'id':m.from_user.id})==None:
@@ -33,20 +38,22 @@ def newchatmember(m):
       users.insert_one(createuser(user.id,user.first_name))
       hello=random.choice(monika_hello_basic)
       sendact(m.chat.id, monika, 'typing')
-      t=threading.Timer(4,sendm,args=[m.chat.id,monika,hello])
+      t=threading.Timer(4,sendm,args=[m.chat.id,monika,hello,sticker=''])
       t.start()
       if 'миленькой Нацуки' in hello:
          t=threading.Timer(5,sendact,args=[m.chat.id,natsuki,'typing'])
          t.start()
-         t=threading.Timer(7,sendm,args=[m.chat.id,natsuki,'Я не миленькая!!!!'])
+         t=threading.Timer(7,sendm,args=[m.chat.id,natsuki,'Я не миленькая!!!!',sticker=''])
          t.start()
       
 
 def sendact(id,bot,act):
    bot.send_chat_action(id,act)
       
-def sendm(id,bot,text,parse_mode=None):
+def sendm(id,bot,text,parse_mode=None, sticker=None):
    bot.send_message(id,text,parse_mode=parse_mode)
+   if sticker!=None:
+       bot.send_sticker(id,stick)
  
 
 def createuser(id,name):
