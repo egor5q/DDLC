@@ -67,6 +67,7 @@ def testt(m):
 
 @natsuki.message_handler()
 def natsukki(m):
+    pass
     
   
 def sendact(id,bot,act):
