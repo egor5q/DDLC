@@ -12,6 +12,7 @@ nltk.download()
 #from nltk.stem import PorterStemmer
 #from nltk.tokenize import sent_tokenize, word_tokenize
 
+
 monika = telebot.TeleBot(os.environ['monika'])
 sayori = telebot.TeleBot(os.environ['sayori'])
 yuri = telebot.TeleBot(os.environ['yuri'])
