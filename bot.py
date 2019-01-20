@@ -89,7 +89,8 @@ def natsukki(m):
     cute=0
     for ids in text:
         i=ids.lower()
-        if 'нацуки' in i or m.reply_to_message.from_user.id==769334999:
+        try:
+          if 'нацуки' in i or m.reply_to_message.from_user.id==769334999:
             allwords=word_tokenize(i)
             lastword=None
             for idss in allwords:
