@@ -91,10 +91,12 @@ def natsukki(m):
         i=ids.lower()
         if 'нацуки' in i:
             allwords=word_tokenize(i)
+            lastword=None
             for idss in allwords:
                 word=ps.stem(idss)
-                if word in cutes:
+                if word in cutes and lastword!='не':
                     cute=1
+                lastword=word
     if cute==1:
         sendm(m.chat.id, natsuki,'Эй! Я не милая!','CAADAgADJQUAAh47XQVR4niIEFL99wI')
             
