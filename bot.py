@@ -38,12 +38,12 @@ def newchatmember(m):
       users.insert_one(createuser(user.id,user.first_name))
       hello=random.choice(monika_hello_basic)
       sendact(m.chat.id, monika, 'typing')
-      t=threading.Timer(4,sendm,args=[m.chat.id,monika,hello,sticker=''])
+      t=threading.Timer(4,sendm,args=[m.chat.id,monika,hello,None,''])
       t.start()
       if 'миленькой Нацуки' in hello:
          t=threading.Timer(5,sendact,args=[m.chat.id,natsuki,'typing'])
          t.start()
-         t=threading.Timer(7,sendm,args=[m.chat.id,natsuki,'Я не миленькая!!!!',sticker=''])
+         t=threading.Timer(7,sendm,args=[m.chat.id,natsuki,'Я не миленькая!!!!',None,''])
          t.start()
       
 
