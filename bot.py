@@ -53,7 +53,7 @@ def sendact(id,bot,act):
 def sendm(id,bot,text,parse_mode=None, sticker=None):
    bot.send_message(id,text,parse_mode=parse_mode)
    if sticker!=None:
-       bot.send_sticker(id,stick)
+       bot.send_sticker(id,sticker)
  
 
 def createuser(id,name):
