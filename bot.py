@@ -31,6 +31,8 @@ monika_hello_basic=['Здравствуй, наш дорогой гость! Т�
 @bot.message_handler(content_types=['new_chat_members'])
 def newchatmember(m):
    if users.find_one({'id':m.from_user.id})==None:
+      user=m.from_user
+      users.insert_one(createuser(user.id,user.first_name))
       hello=random.choice(monika_hello_basic)
       sendact(m.chat.id, monika, 'typing')
       t=threading.Timer(4,sendm,args=[m.chat.id,monika,hello])
@@ -47,7 +49,13 @@ def sendact(id,bot,act):
       
 def sendm(id,bot,text,parse_mode=None):
    bot.send_message(id,text,parse_mode=parse_mode)
-      
+ 
+
+def createuser(id,name):
+    return {
+        'name':name,
+        'id':id
+    }
 
 if True:
    print('7777')
