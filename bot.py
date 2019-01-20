@@ -38,29 +38,30 @@ def newchatmember(m):
       users.insert_one(createuser(user.id,user.first_name))
       hello=random.choice(monika_hello_basic)
       sendact(m.chat.id, monika, 'typing')
-      t=threading.Timer(4,sendm,args=[m.chat.id,monika,hello,None,'CAADAgADMQUAAh47XQXbuhY0MkazFwI'])
+      t=threading.Timer(4,sendm,args=[m.chat.id,monika,hello,'CAADAgADMQUAAh47XQXbuhY0MkazFwI'])
       t.start()
       if 'миленькой Нацуки' in hello:
          t=threading.Timer(5,sendact,args=[m.chat.id,natsuki,'typing'])
          t.start()
-         t=threading.Timer(7,sendm,args=[m.chat.id,natsuki,'Я не миленькая!!!!',None,'CAADAgADJQUAAh47XQVR4niIEFL99wI'])
+         t=threading.Timer(7,sendm,args=[m.chat.id,natsuki,'Я не миленькая!!!!','CAADAgADJQUAAh47XQVR4niIEFL99wI'])
          t.start()
       
 @monika.message_handler(commands=['test'])
 def testt(m):
    if m.from_user.id==441399484:
-      t=threading.Timer(4,sendm,args=[m.chat.id,monika,'Нацуки, ты такая милая)',None,'CAADAgADMQUAAh47XQXbuhY0MkazFwI'])
+      sendact(m.chat.id, monika, 'typing')
+      t=threading.Timer(4,sendm,args=[m.chat.id,monika,'Нацуки, ты такая милая)','CAADAgADMQUAAh47XQXbuhY0MkazFwI'])
       t.start()
       t=threading.Timer(5,sendact,args=[m.chat.id,natsuki,'typing'])
       t.start()
-      t=threading.Timer(7,sendm,args=[m.chat.id,natsuki,'Я не милая!!!!',None,'CAADAgADJQUAAh47XQVR4niIEFL99wI'])
+      t=threading.Timer(7,sendm,args=[m.chat.id,natsuki,'Я не милая!!!!','CAADAgADJQUAAh47XQVR4niIEFL99wI'])
       t.start()
       
       
 def sendact(id,bot,act):
    bot.send_chat_action(id,act)
       
-def sendm(id,bot,text,parse_mode=None, sticker=None):
+def sendm(id,bot,text,sticker=None,parse_mode=None):
    bot.send_message(id,text,parse_mode=parse_mode)
    if sticker!=None:
        bot.send_sticker(id,sticker)
