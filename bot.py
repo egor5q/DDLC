@@ -67,7 +67,7 @@ def testt(m):
 
 @natsuki.message_handler()
 def natsukki(m):
-    ps = PorterStemmer()
+    ps = nltk.PorterStemmer()
     text=sent_tokenize(m.text)
     cute=0
     for ids in text:
