@@ -8,6 +8,7 @@ from emoji import emojize
 from telebot import types
 from pymongo import MongoClient
 import nltk
+from nltk.stem import PorterStemmer
 
 monika = telebot.TeleBot(os.environ['monika'])
 sayori = telebot.TeleBot(os.environ['sayori'])
