@@ -32,6 +32,11 @@ sayori = telebot.TeleBot(os.environ['sayori'])
 yuri = telebot.TeleBot(os.environ['yuri'])
 natsuki = telebot.TeleBot(os.environ['natsuki'])
 
+nstats={
+    'cute':{},
+    'ban':[]
+}
+
 client=MongoClient(os.environ['database'])
 db=client.ddlc
 users=db.users
@@ -84,6 +89,7 @@ def testt(m):
 
 @natsuki.message_handler()
 def natsukki(m):
+  if m.from_user.id not in nstats['ban']:
     ps = PorterStemmer()
     text=sent_tokenize(m.text)
     cute=0
@@ -101,11 +107,36 @@ def natsukki(m):
         except:
           pass
     if cute==1:
-        sendm(m.chat.id, natsuki,'Эй! Я не милая!','CAADAgADJQUAAh47XQVR4niIEFL99wI')
+        try:
+            if nstats['cute'][m.from_user.id]['cutecount']==1:
+                text='Хватит называть меня милой!'
+                stick='CAADAgADJAUAAh47XQWqrQRHYiQ3hgI'
+                nstats['cute'][m.from_user.id]['cutecount']+=1
+            elif nstats['cute'][m.from_user.id]['cutecount']==2:
+                del nstats['cute'][m.from_user.id]
+                text='Я обиделась.'
+                stick='CAADAgADKAUAAh47XQVTttoUBXCT0gI'
+                nstats['ban'].append(m.from_user.id)
+                t=threading.Timer(300,n_unban,args=[m.from_user.id])
+                t.start()
+        except:
+            nstats['cute'].update(createcute(m.from_user.id))
+            text='Эй! Я не милая!'
+            stick='CAADAgADJQUAAh47XQVR4niIEFL99wI'
+        sendm(m.chat.id, natsuki,text,stick)
             
             
-            
-    
+def n_unban(id):
+    try:
+        nstats['ban'].remove(id)
+    except:
+        pass
+
+def createcute(id):
+  return {id:{'id':id,
+              'cutecount':0
+             }
+         }
   
 def sendact(id,bot,act):
    bot.send_chat_action(id,act)
