@@ -14,7 +14,6 @@ sayori = telebot.TeleBot(os.environ['sayori'])
 yuri = telebot.TeleBot(os.environ['yuri'])
 natsuki = telebot.TeleBot(os.environ['natsuki'])
 
-
 client=MongoClient(os.environ['database'])
 db=client.ddlc
 users=db.users
@@ -67,7 +66,23 @@ def testt(m):
 
 @natsuki.message_handler()
 def natsukki(m):
-    pass
+    ps = PorterStemmer()
+    text=sent_tokenize(m.text)
+    cute=0
+    for ids in text:
+        i=ids.lower()
+        if 'нацуки' in i:
+            allwords=word_tokenize(i)
+            for idss in allwords:
+                word=ps.stem(idss).split(':')[1]
+                print(word)
+                if word=='милый':
+                    cute=1
+    if cute==1:
+        sendm(m.chat.id, natsuki,'Эй! Я не милая!','CAADAgADJQUAAh47XQVR4niIEFL99wI')
+            
+            
+            
     
   
 def sendact(id,bot,act):
