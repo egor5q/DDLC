@@ -79,7 +79,7 @@ def natsukki(m):
         if 'нацуки' in i:
             allwords=word_tokenize(i)
             for idss in allwords:
-                word=ps.stem(idss).split(':')[1]
+                word=ps.stem(idss)
                 print(word)
                 if word=='милый':
                     cute=1
