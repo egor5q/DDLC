@@ -98,6 +98,8 @@ def natsukki(m):
                 if word in cutes and lastword!='не':
                     cute=1
                 lastword=word
+        except:
+          pass
     if cute==1:
         sendm(m.chat.id, natsuki,'Эй! Я не милая!','CAADAgADJQUAAh47XQVR4niIEFL99wI')
             
