@@ -13,7 +13,7 @@ from nltk.stem import PorterStemmer
 import nltk
 nltk.download('punkt')
 
-
+cute=['милая']
 monika = telebot.TeleBot(os.environ['monika'])
 sayori = telebot.TeleBot(os.environ['sayori'])
 yuri = telebot.TeleBot(os.environ['yuri'])
@@ -76,13 +76,13 @@ def natsukki(m):
     cute=0
     for ids in text:
         i=ids.lower()
-        #if 'нацуки' in i:
-        allwords=word_tokenize(i)
-        for idss in allwords:
-            word=ps.stem(idss)
-            print(word)
-            if word=='милый':
-                cute=1
+        if 'нацуки' in i:
+            allwords=word_tokenize(i)
+            for idss in allwords:
+                word=ps.stem(idss)
+                print(word)
+                if word=='милая':
+                    cute=1
     if cute==1:
         sendm(m.chat.id, natsuki,'Эй! Я не милая!','CAADAgADJQUAAh47XQVR4niIEFL99wI')
             
