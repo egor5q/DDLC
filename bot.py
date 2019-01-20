@@ -8,7 +8,8 @@ from emoji import emojize
 from telebot import types
 from pymongo import MongoClient
 import nltk
-nltk.download()
+
+#nltk.download()
 #from nltk.stem import PorterStemmer
 #from nltk.tokenize import sent_tokenize, word_tokenize
 
