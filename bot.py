@@ -10,6 +10,9 @@ from pymongo import MongoClient
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
+import nltk
+nltk.download('punkt')
+
 
 monika = telebot.TeleBot(os.environ['monika'])
 sayori = telebot.TeleBot(os.environ['sayori'])
