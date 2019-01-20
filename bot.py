@@ -7,6 +7,7 @@ import threading
 from emoji import emojize
 from telebot import types
 from pymongo import MongoClient
+import nltk
 
 monika = telebot.TeleBot(os.environ['monika'])
 sayori = telebot.TeleBot(os.environ['sayori'])
@@ -25,6 +26,8 @@ monika_hello_basic=['Добро пожаловать в литературный
                     'с нами надолго.','Здравствуй, наш дорогой гость! Тут ты сможешь пообщаться с уже вступившими членами клуба - Всегда '+\
                     'весёлой Сайори, начитанной Юри и миленькой Нацуки.','Приветствую тебя в Литературном клубе. Проходи не стесняйся,'+\
                     'Нацуки уже испекла кексики к твоему приходу, а Юри сделает чай, если ты хочешь.']
+
+#---------------------------------Monika handlers start-------------------------------------------------------
 
 @monika.message_handler(content_types=['sticker'])
 def stickercatch(m):
@@ -57,7 +60,15 @@ def testt(m):
       t=threading.Timer(7,sendm,args=[m.chat.id,natsuki,'Я не милая!!!!','CAADAgADJQUAAh47XQVR4niIEFL99wI'])
       t.start()
       
-      
+  
+#---------------------------------Monika handlers end-------------------------------------------------------
+
+#---------------------------------Natsuki handlers start-------------------------------------------------------
+
+@natsuki.message_handler()
+def natsukki(m):
+    
+  
 def sendact(id,bot,act):
    bot.send_chat_action(id,act)
       
