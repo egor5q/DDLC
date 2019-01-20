@@ -68,12 +68,12 @@ def testt(m):
 @natsuki.message_handler()
 def natsukki(m):
     ps = nltk.PorterStemmer()
-    text=sent_tokenize(m.text)
+    text=nltk.sent_tokenize(m.text)
     cute=0
     for ids in text:
         i=ids.lower()
         if 'нацуки' in i:
-            allwords=word_tokenize(i)
+            allwords=nltk.word_tokenize(i)
             for idss in allwords:
                 word=ps.stem(idss).split(':')[1]
                 print(word)
