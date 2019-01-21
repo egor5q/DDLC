@@ -136,7 +136,7 @@ def n_unban(id):
 
 def createcute(id):
   return {id:{'id':id,
-              'cutecount':0
+              'cutecount':1
              }
          }
   
