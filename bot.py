@@ -126,7 +126,9 @@ def natsukki(m):
             text='Эй! Я не милая!'
             stick='CAADAgADJQUAAh47XQVR4niIEFL99wI'
         sendm(m.chat.id, natsuki,text,stick)
-            
+      
+    
+#---------------------------------Natsuki handlers end-------------------------------------------------------
             
 def n_unban(id):
     try:
