@@ -119,6 +119,8 @@ def natsukki(m):
                 nstats['ban'].append(m.from_user.id)
                 t=threading.Timer(300,n_unban,args=[m.from_user.id])
                 t.start()
+            else:
+                pass
         except:
             nstats['cute'].update(createcute(m.from_user.id))
             text='Эй! Я не милая!'
