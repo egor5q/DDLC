@@ -187,7 +187,6 @@ def monikamessages(m):
                             finish+=1
                         toremove.append(finish)
                         otv=calculate(skobka)
-                        otv=3
                         r=toremove[0]
                         print('r=')
                         print(r)
@@ -206,9 +205,15 @@ def monikamessages(m):
                     
 def calculate(msv):
     otv=[]
+    i=0
     for ids in msv:
         if ids=='*':
-            pass
+            prm=msv[i-1]*msv[i+1]
+            msv.pop(i-1)
+            msv.pop(i-1)
+            msv.pop(i-1)
+        i+=1
+    print(msv)
                        
             
 
