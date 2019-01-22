@@ -152,46 +152,30 @@ def monikamessages(m):
     if m.reply_to_message!=None:
         if m.from_user.id in mstats['help'] and m.reply_to_message.from_user.id==780744403:
             try:
-                for idss in m.text:
-                     p_otv=''
-                     nmb=z
-                     cnt=0
-                     while m.text[nmb] in ds:
-                         p_otv+=m.text[nmb]
-                         nmb+=1
-                         cnt+=1
-                         if len(m.text)==nmb:
-                             break
-                     while cnt>0:
-                         m.text.pop(z)
-                         cnt-=1
-                     if p_otv!='':
-                         m.text.insert(z,int(p_otv))
-                     z+=1
                 answer=0
                 ds=['1','2','3','4','5','6','7','8','9','0']
                 sm=['+','-',')','(',':','/','>','<','=','*','^']
                 i=0
                 quest=[]
                 for ids in m.text:  # Сразу возводим числа в степени; quest на выходе состоит из str - чисел и знаков
-                  try:
-                    if m.text[i]=='^':
-                        digit=int(m.text[i-1])
-                        st=int(m.text[i+1])
-                        c=1
-                        answ=digit
-                        while c<int(st):
-                            answ=answ*digit
-                            c+=1
-                        quest=quest[:(len(quest)-1)]
-                        quest.append(str(answ))
-                        print(quest)
-                        i+=1
-                    else:
-                        quest.append(ids)
-                    i+=1
-                  except:
-                    pass
+                    quest.append(ids)
+                z=0
+                for idss in quest:
+                    p_otv=''
+                    nmb=z
+                    cnt=0
+                    while quest[nmb] in ds:
+                        p_otv+=quest[nmb]
+                        nmb+=1
+                        cnt+=1
+                        if len(quest)==nmb:
+                            break
+                    while cnt>0:
+                        quest.pop(z)
+                        cnt-=1
+                    if p_otv!='':
+                        quest.insert(z,int(p_otv))
+                    z+=1
                 answ=[]
                 i=0
                 for ids in quest:
@@ -271,6 +255,16 @@ def calculate(msv):
     otv=0
     i=0
     for ids in msv:
+        if ids=='^':
+            prm=msv[i-1]^msv[i+1]
+            msv.pop(i-1)
+            msv.pop(i-1)
+            msv.pop(i-1)
+            otv+=prm
+            msv.insert(i-1,prm)
+        i+=1
+    i=0
+    for ids in msv:
         if ids=='*':
             prm=msv[i-1]*msv[i+1]
             msv.pop(i-1)
@@ -282,6 +276,16 @@ def calculate(msv):
     i=0
     for ids in msv:
         if ids=='+':
+            prm=msv[i-1]+msv[i+1]
+            msv.pop(i-1)
+            msv.pop(i-1)
+            msv.pop(i-1)
+            otv+=prm
+            msv.insert(i-1,prm)
+        i+=1
+    i=0
+    for ids in msv:
+        if ids=='-':
             prm=msv[i-1]+msv[i+1]
             msv.pop(i-1)
             msv.pop(i-1)
