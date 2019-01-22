@@ -45,7 +45,7 @@ def skl(x):
         return {
             'у':'Нацуки',
             'с':'Нацуки',
-            'для':'Нацуки'
+            'для':'Нацуки',
             'перед':'Нацуки',
             'после':'Нацуки'
         }
@@ -155,7 +155,7 @@ def monikamessages(m):
             sm=['+','-',')','(',':','/','>','<','=','*','^']
             i=0
             quest=[]
-            for ids in m.text:                    # Сразу возводим числа в степени
+            for ids in m.text:                    # Сразу возводим числа в степени; quest на выходе состоит из int - чисел и знаков
                 if ids=='^':
                     digit=int(m.text[i-1])
                     st=int(m.text[i+1])
@@ -187,9 +187,11 @@ def monikamessages(m):
                     r=toremove[0]
                     for idss in toremove:
                         quest.pop([r])
+                    print(quest)
                       
-        except:
-            pass
+        except Exception as e:
+            print('Ошибка:\n', traceback.format_exc())
+            monika.send_message(441399484, traceback.format_exc())
                         
                    
                     
