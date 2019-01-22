@@ -188,6 +188,7 @@ def monikamessages(m):
                             finish+=1
                         z=0
                         for idss in skobka:
+                          try:
                             p_otv=''
                             nmb=z
                             cnt=0
@@ -202,6 +203,8 @@ def monikamessages(m):
                             if p_otv!='':
                                 skobka.insert(z,int(p_otv))
                             z+=1
+                          except:
+                            pass
                         print('skobka=')
                         print(skobka)
                         toremove.append(finish)
