@@ -300,7 +300,7 @@ def calculate(msv):
     i=0
     for ids in msv:
         if ids=='-':
-            prm=msv[i-1]+msv[i+1]
+            prm=msv[i-1]-msv[i+1]
             msv.pop(i-1)
             msv.pop(i-1)
             msv.pop(i-1)
