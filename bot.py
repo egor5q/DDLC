@@ -166,10 +166,10 @@ def monikamessages(m):
                         while c<int(st):
                             answ=answ*digit
                             c+=1
-                        quest.append(answ)
+                        quest.append(str(answ))
                     else:
                         try:
-                            quest.append(int(ids))
+                            quest.append(ids)
                         except:
                             quest.append(ids)
                     i+=1
