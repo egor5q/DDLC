@@ -148,7 +148,7 @@ def monikamessages(m):
             mstats['help'].append(m.from_user.id)
             t=threading.Timer(120,mremove,args=[m.from_user.id,m.chat.id])
             t.start()
-    if m.from_user.id in mstats['help'] and m.reply_to_message.from_user.id==:
+    if m.from_user.id in mstats['help'] and m.reply_to_message.from_user.id==780744403:
         try:
             answer=0
             ds=['1','2','3','4','5','6','7','8','9','0']
