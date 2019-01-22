@@ -233,6 +233,7 @@ def monikamessages(m):
                             quest.insert(z,float(p_otv))
                         z+=1
                 i=0
+                print(quest)
                 for ids in quest:
                     try:
                         a=int(ids)
