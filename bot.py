@@ -323,11 +323,15 @@ def calculate(msv):
         i+=1
     print(msv)
     otv=0
+    last='+'
     for ids in msv:
         try:
-            otv+=ids
+            if last=='+':
+                otv+=ids
+            elif last=='-':
+                otv-=ids
         except:
-            pass
+            last=ids
     return otv
                        
             
