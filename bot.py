@@ -168,10 +168,7 @@ def monikamessages(m):
                             c+=1
                         quest.append(str(answ))
                     else:
-                        try:
-                            quest.append(ids)
-                        except:
-                            quest.append(ids)
+                        quest.append(ids)
                     i+=1
                 answ=[]
                 i=0
@@ -188,8 +185,7 @@ def monikamessages(m):
                             finish+=1
                         z=0
                         for idss in skobka:
-                          try:
-                            p_otv=''
+                            p_otv='None'
                             nmb=z
                             cnt=0
                             while skobka[nmb] in ds:
@@ -200,11 +196,9 @@ def monikamessages(m):
                                 skobka.pop(z)
                                 cnt-=1
                             print(p_otv)
-                            if p_otv!='':
+                            if p_otv!='None':
                                 skobka.insert(z,int(p_otv))
                             z+=1
-                          except:
-                            pass
                         print('skobka=')
                         print(skobka)
                         toremove.append(finish)
