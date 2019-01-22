@@ -27,7 +27,7 @@ nltk.download('vader_lexicon')
 nltk.download('treebank')
 nltk.download('dependency_treebank')
 
-goodmonika=['классная','молодец','супер','красивая','умная']
+goodmonika=['классная','молодец','супер','красивая','умная','умница']
 cutes=['милая','милашка','миленькой','милой','милую']
 monika = telebot.TeleBot(os.environ['monika'])
 sayori = telebot.TeleBot(os.environ['sayori'])
@@ -271,9 +271,9 @@ def monikamessages(m):
               pass
         if cute==1:
             gds=['Ой, спасибо)','Да ладно тебе)','Ты меня смущаешь...)']
-            t=threading.Timer(1,sendact,args=[id,monika,'typing'])
+            t=threading.Timer(1,sendact,args=[m.chat.id,monika,'typing'])
             t.start()
-            t=threading.Timer(3.5,sendm,args=[id,monika,random.choice(gds)])
+            t=threading.Timer(3.5,sendm,args=[m.chat.id,monika,random.choice(gds)])
             t.start()
                    
 def giveansw(id,otvet):
