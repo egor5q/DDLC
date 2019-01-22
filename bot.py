@@ -174,7 +174,7 @@ def monikamessages(m):
                         quest.pop(z)
                         cnt-=1
                     if p_otv!='':
-                        quest.insert(z,int(p_otv))
+                        quest.insert(z,double(p_otv))
                     z+=1
                 answ=[]
                 i=0
@@ -204,7 +204,7 @@ def monikamessages(m):
                                 skobka.pop(z)
                                 cnt-=1
                             if p_otv!='':
-                                skobka.insert(z,int(p_otv))
+                                skobka.insert(z,double(p_otv))
                             z+=1
                         toremove.append(finish)
                         otv=calculate(skobka)
@@ -231,7 +231,7 @@ def monikamessages(m):
                             quest.pop(z)
                             cnt-=1
                         if p_otv!='':
-                            quest.insert(z,int(p_otv))
+                            quest.insert(z,double(p_otv))
                         z+=1
                 i=0
                 for ids in quest:
@@ -257,7 +257,7 @@ def calculate(msv):
     for ids in msv:
         if ids=='^':
             prm=msv[i-1]
-            o=0
+            o=1
             while o<msv[i+1]:
                 prm=prm*msv[i-1]
                 o+=1
@@ -271,6 +271,16 @@ def calculate(msv):
     for ids in msv:
         if ids=='*':
             prm=msv[i-1]*msv[i+1]
+            msv.pop(i-1)
+            msv.pop(i-1)
+            msv.pop(i-1)
+            otv+=prm
+            msv.insert(i-1,prm)
+        i+=1
+    i=0
+    for ids in msv:
+        if ids=='/' or ids==':':
+            prm=msv[i-1]/msv[i+1]
             msv.pop(i-1)
             msv.pop(i-1)
             msv.pop(i-1)
