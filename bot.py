@@ -191,7 +191,7 @@ def monikamessages(m):
                             p_otv=''
                             nmb=z
                             cnt=0
-                            while skobka[nmb] in ds:
+                            while skobka[nmb] in ds and len(skobka)>nmb:
                                 p_otv+=skobka[nmb]
                                 nmb+=1
                                 cnt+=1
