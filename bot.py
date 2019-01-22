@@ -4,6 +4,7 @@ import telebot
 import time
 import random
 import threading
+import traceback
 from emoji import emojize
 from telebot import types
 from pymongo import MongoClient
