@@ -157,7 +157,7 @@ def monikamessages(m):
                 sm=['+','-',')','(',':','/','>','<','=','*','^']
                 i=0
                 quest=[]
-                for ids in m.text:                    # Сразу возводим числа в степени; quest на выходе состоит из int - чисел и знаков
+                for ids in m.text:                    # Сразу возводим числа в степени; quest на выходе состоит из str - чисел и знаков
                     if ids=='^':
                         digit=int(m.text[i-1])
                         st=int(m.text[i+1])
@@ -195,7 +195,7 @@ def monikamessages(m):
                             while cnt>0:
                                 skobka.pop(z)
                                 cnt-=1
-                                z-=1
+                                z+=1
                             print(p_otv)
                             if p_otv!='':
                                 skobka.insert(z,int(p_otv))
