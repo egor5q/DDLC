@@ -152,6 +152,22 @@ def monikamessages(m):
     if m.reply_to_message!=None:
         if m.from_user.id in mstats['help'] and m.reply_to_message.from_user.id==780744403:
             try:
+                for idss in m.text:
+                     p_otv=''
+                     nmb=z
+                     cnt=0
+                     while m.text[nmb] in ds:
+                         p_otv+=m.text[nmb]
+                         nmb+=1
+                         cnt+=1
+                         if len(m.text)==nmb:
+                             break
+                     while cnt>0:
+                         m.text.pop(z)
+                         cnt-=1
+                     if p_otv!='':
+                         m.text.insert(z,int(p_otv))
+                     z+=1
                 answer=0
                 ds=['1','2','3','4','5','6','7','8','9','0']
                 sm=['+','-',')','(',':','/','>','<','=','*','^']
@@ -169,6 +185,7 @@ def monikamessages(m):
                             c+=1
                         quest=quest[:(len(quest)-1)]
                         quest.append(str(answ))
+                        print(quest)
                         i+=1
                     else:
                         quest.append(ids)
@@ -190,9 +207,6 @@ def monikamessages(m):
                             finish+=1
                         z=0
                         for idss in skobka:
-                            print('z=' +str(z))
-                            print('idss=' +str(idss))
-                            print(skobka)
                             p_otv=''
                             nmb=z
                             cnt=0
