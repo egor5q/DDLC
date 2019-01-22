@@ -27,6 +27,7 @@ nltk.download('vader_lexicon')
 nltk.download('treebank')
 nltk.download('dependency_treebank')
 
+goodmonika=['классная','молодец','супер','красивая','умная']
 cutes=['милая','милашка','миленькой','милой','милую']
 monika = telebot.TeleBot(os.environ['monika'])
 sayori = telebot.TeleBot(os.environ['sayori'])
@@ -252,7 +253,28 @@ def monikamessages(m):
             except Exception as e:
                 print('Ошибка:\n', traceback.format_exc())
                 monika.send_message(441399484, traceback.format_exc())
-                        
+            ps = PorterStemmer()
+        text=sent_tokenize(m.text)
+        cute=0
+        for ids in text:
+            i=ids.lower()
+            try:
+              if 'моника' in i or m.reply_to_message.from_user.id==780744403:
+                allwords=word_tokenize(i)
+                lastword=None
+                for idss in allwords:
+                    word=ps.stem(idss)
+                    if word in goodmonika and lastword!='не':
+                        cute=1
+                    lastword=word
+            except:
+              pass
+        if cute==1:
+            gds=['Ой, спасибо)','Да ладно тебе)','Ты меня смущаешь...)']
+            t=threading.Timer(1,sendact,args=[id,monika,'typing'])
+            t.start()
+            t=threading.Timer(3.5,sendm,args=[id,monika,random.choice(gds)])
+            t.start()
                    
 def giveansw(id,otvet):
     monika.send_chat_action(id,'typing')
