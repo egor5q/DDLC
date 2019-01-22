@@ -189,10 +189,6 @@ def monikamessages(m):
                         toremove.append(finish)
                         otv=calculate(skobka)
                         r=toremove[0]
-                        print('r=')
-                        print(r)
-                        print('toremove=')
-                        print(toremove)
                         for idss in toremove:
                             quest.pop(r)
                         quest.insert(start,otv)
@@ -229,7 +225,7 @@ def calculate(msv):
         i+=1
     print(msv)
     print(otv)
-    return otv
+    return msv[0]
                        
             
 
