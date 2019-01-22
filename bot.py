@@ -157,8 +157,9 @@ def monikamessages(m):
                 sm=['+','-',')','(',':','/','>','<','=','*','^']
                 i=0
                 quest=[]
-                for ids in m.text:                    # Сразу возводим числа в степени; quest на выходе состоит из str - чисел и знаков
-                    if ids=='^':
+                for ids in m.text:  # Сразу возводим числа в степени; quest на выходе состоит из str - чисел и знаков
+                  try:
+                    if m.text[i]=='^':
                         digit=int(m.text[i-1])
                         st=int(m.text[i+1])
                         c=1
@@ -166,10 +167,14 @@ def monikamessages(m):
                         while c<int(st):
                             answ=answ*digit
                             c+=1
+                        quest=quest[:(len(quest)-1)]
                         quest.append(str(answ))
+                        i+=1
                     else:
                         quest.append(ids)
                     i+=1
+                  except:
+                    pass
                 answ=[]
                 i=0
                 for ids in quest:
