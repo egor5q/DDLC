@@ -174,7 +174,7 @@ def monikamessages(m):
                         quest.pop(z)
                         cnt-=1
                     if p_otv!='':
-                        quest.insert(z,double(p_otv))
+                        quest.insert(z,float(p_otv))
                     z+=1
                 answ=[]
                 i=0
@@ -204,7 +204,7 @@ def monikamessages(m):
                                 skobka.pop(z)
                                 cnt-=1
                             if p_otv!='':
-                                skobka.insert(z,double(p_otv))
+                                skobka.insert(z,float(p_otv))
                             z+=1
                         toremove.append(finish)
                         otv=calculate(skobka)
@@ -231,7 +231,7 @@ def monikamessages(m):
                             quest.pop(z)
                             cnt-=1
                         if p_otv!='':
-                            quest.insert(z,double(p_otv))
+                            quest.insert(z,float(p_otv))
                         z+=1
                 i=0
                 for ids in quest:
