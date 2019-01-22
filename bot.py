@@ -213,6 +213,23 @@ def monikamessages(m):
                     else:
                         pass
                     i+=1
+                z=0
+                for idss in quest:
+                        p_otv=''
+                        nmb=z
+                        cnt=0
+                        while quest[nmb] in ds:
+                            p_otv+=quest[nmb]
+                            nmb+=1
+                            cnt+=1
+                            if len(quest)==nmb:
+                                break
+                        while cnt>0:
+                            quest.pop(z)
+                            cnt-=1
+                        if p_otv!='':
+                            quest.insert(z,int(p_otv))
+                        z+=1
                 i=0
                 for ids in quest:
                     try:
