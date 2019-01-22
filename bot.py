@@ -200,13 +200,9 @@ def monikamessages(m):
                             while cnt>0:
                                 skobka.pop(z)
                                 cnt-=1
-                            print(p_otv)
                             if p_otv!='':
                                 skobka.insert(z,int(p_otv))
                             z+=1
-                        print('skobka=')
-                        print(skobka)
-                        print('------')
                         toremove.append(finish)
                         otv=calculate(skobka)
                         r=toremove[0]
@@ -214,7 +210,18 @@ def monikamessages(m):
                             quest.pop(r)
                         quest.insert(start,otv)
                         print(quest)
-                    i+=1      
+                    i+=1
+                i=0
+                for ids in quest:
+                    try:
+                        a=int(ids)
+                        quest.pop(i)
+                        quest.insert(i,a)
+                    except:
+                        pass
+                    i+=1
+                otvet=calculate(quest)
+                monika.send_message(m.chat.id, str(otvet))
             except Exception as e:
                 print('Ошибка:\n', traceback.format_exc())
                 monika.send_message(441399484, traceback.format_exc())
