@@ -182,7 +182,8 @@ def monikamessages(m):
                         finish=i
                         toremove=[]
                         while quest[finish]!=')':
-                            skobka.append(quest[finish])
+                            if quest[finish]!='(' and quest[finish]!=')':
+                                skobka.append(quest[finish])
                             toremove.append(finish)
                             finish+=1
                         toremove.append(finish)
@@ -204,7 +205,7 @@ def monikamessages(m):
                    
                     
 def calculate(msv):
-    otv=[]
+    otv=0
     i=0
     for ids in msv:
         if ids=='*':
@@ -212,8 +213,10 @@ def calculate(msv):
             msv.pop(i-1)
             msv.pop(i-1)
             msv.pop(i-1)
+            otv+=prm
         i+=1
     print(msv)
+    print(otv)
                        
             
 
