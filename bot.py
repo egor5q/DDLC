@@ -198,6 +198,7 @@ def monikamessages(m):
                             while cnt>0:
                                 skobka.pop(z)
                                 cnt-=1
+                            print(p_otv)
                             if p_otv!='':
                                 skobka.insert(z,int(p_otv))
                             z+=1
