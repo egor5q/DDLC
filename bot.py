@@ -149,7 +149,7 @@ def monikamessages(m):
             mstats['help'].append(m.from_user.id)
             t=threading.Timer(120,mremove,args=[m.from_user.id,m.chat.id])
             t.start()
-    if m.reply_to_message!=None:
+    elif m.reply_to_message!=None:
         if m.from_user.id in mstats['help'] and m.reply_to_message.from_user.id==780744403:
             try:
                 answer=0
@@ -242,15 +242,29 @@ def monikamessages(m):
                     except:
                         pass
                     i+=1
-                print(quest)
                 otvet=calculate(quest)
-                monika.send_message(m.chat.id, str(otvet))
+                try:
+                    mstats['help'].remove(m.from_user.id)
+                except:
+                    pass
+                t=threading.Timer(1,giveansw,args=[m.chat.id,otvet])
+                t.start()
             except Exception as e:
                 print('Ошибка:\n', traceback.format_exc())
                 monika.send_message(441399484, traceback.format_exc())
                         
                    
-                    
+def giveansw(id,otvet):
+    monika.send_chat_action(id,'typing')
+    t=threading.Timer(1.5,sendm,args=[id,monika,'Хмм... Подожди пару секунд.'])
+    t.start()
+    t=threading.Timer(4,sendact,args=[id,monika,'typing'])
+    t.start()
+    t=threading.Timer(6,sendm,args=[id,monika,'Судя по моим расчётам, будет `'+str(otvet)+'`. Не благодари!','CAADAgADMwUAAh47XQVxmIa4ZBC_UQI','markdown'])
+    t.start()
+                     
+
+
 def calculate(msv):
     otv=0
     i=0
