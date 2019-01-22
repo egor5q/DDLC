@@ -210,6 +210,8 @@ def monikamessages(m):
                             quest.pop(r)
                         quest.insert(start,otv)
                         print(quest)
+                    else:
+                        
                     i+=1
                 i=0
                 for ids in quest:
@@ -251,7 +253,11 @@ def calculate(msv):
             otv+=prm
             msv.insert(i-1,prm)
         i+=1
-    return msv[0]
+    print(msv)
+    otv=0
+    for ids in msv:
+        otv+=ids
+    return otv
                        
             
 
