@@ -256,7 +256,7 @@ def mremove(id,chatid):
     try:
         mstats['help'].remove(id)
         monika.send_chat_action(chatid,'typing')
-        t=threading.Timer(3,sendm,args=[id,monika,'Ты, наверное, уже не помнишь свой вопрос. Ничего страшного, такое бывает. Подходи, как вспомнишь!','CAADAgADMwUAAh47XQVxmIa4ZBC_UQI'])
+        t=threading.Timer(3,sendm,args=[chatid,monika,'Ты, наверное, уже не помнишь свой вопрос. Ничего страшного, такое бывает. Подходи, как вспомнишь!','CAADAgADMwUAAh47XQVxmIa4ZBC_UQI'])
         t.start()
     except:
         pass
