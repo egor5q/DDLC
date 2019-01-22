@@ -215,8 +215,18 @@ def calculate(msv):
             msv.pop(i-1)
             otv+=prm
         i+=1
+    i=0
+    for ids in msv:
+        if ids=='+':
+            prm=msv[i-1]+msv[i+1]
+            msv.pop(i-1)
+            msv.pop(i-1)
+            msv.pop(i-1)
+            otv+=prm
+        i+=1
     print(msv)
     print(otv)
+    return otv
                        
             
 
