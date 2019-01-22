@@ -188,7 +188,7 @@ def monikamessages(m):
                         otv=calculate(skobka)
                         r=toremove[0]
                         for idss in toremove:
-                            quest.pop([r])
+                            quest.pop(r)
                         print(quest)
                           
             except Exception as e:
