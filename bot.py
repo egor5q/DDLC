@@ -185,7 +185,7 @@ def monikamessages(m):
                             finish+=1
                         z=0
                         for idss in skobka:
-                            p_otv='None'
+                            p_otv=''
                             nmb=z
                             cnt=0
                             while skobka[nmb] in ds:
@@ -196,11 +196,12 @@ def monikamessages(m):
                                 skobka.pop(z)
                                 cnt-=1
                             print(p_otv)
-                            if p_otv!='None':
+                            if p_otv!='':
                                 skobka.insert(z,int(p_otv))
                             z+=1
                         print('skobka=')
                         print(skobka)
+                        print('------')
                         toremove.append(finish)
                         otv=calculate(skobka)
                         r=toremove[0]
