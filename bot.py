@@ -268,8 +268,8 @@ def giveansw(id,otvet):
 def calculate(msv):
     otv=0
     i=0
-    for ids in msv:
-        if ids=='^':
+    while i<len(msv):
+        if msv[i]=='^':
             prm=msv[i-1]
             o=1
             while o<msv[i+1]:
@@ -280,33 +280,37 @@ def calculate(msv):
             msv.pop(i-1)
             otv+=prm
             msv.insert(i-1,prm)
+            i-=1
         i+=1
     i=0
-    for ids in msv:
-        if ids=='*':
+    while i<len(msv):
+        if msv[i]=='*':
             prm=msv[i-1]*msv[i+1]
             msv.pop(i-1)
             msv.pop(i-1)
             msv.pop(i-1)
             otv+=prm
             msv.insert(i-1,prm)
-        elif ids=='/' or ids==':':
+            i-=1
+        elif msv[i]=='/' or msv[i]==':':
             prm=msv[i-1]/msv[i+1]
             msv.pop(i-1)
             msv.pop(i-1)
             msv.pop(i-1)
             otv+=prm
             msv.insert(i-1,prm)
+            i-=1
         i+=1
     i=0
-    for ids in msv:
-        if ids=='+':
+    while i<len(msv):
+        if msv[i]=='+':
             prm=msv[i-1]+msv[i+1]
             msv.pop(i-1)
             msv.pop(i-1)
             msv.pop(i-1)
             otv+=prm
             msv.insert(i-1,prm)
+            i-=1
         elif ids=='-':
             prm=msv[i-1]-msv[i+1]
             msv.pop(i-1)
@@ -314,6 +318,7 @@ def calculate(msv):
             msv.pop(i-1)
             otv+=prm
             msv.insert(i-1,prm)
+            i-=1
         i+=1
     print(msv)
     otv=0
