@@ -214,6 +214,7 @@ def calculate(msv):
             msv.pop(i-1)
             msv.pop(i-1)
             otv+=prm
+            msv.insert(i-1,prm)
         i+=1
     i=0
     for ids in msv:
@@ -223,6 +224,7 @@ def calculate(msv):
             msv.pop(i-1)
             msv.pop(i-1)
             otv+=prm
+            msv.insert(i-1,prm)
         i+=1
     print(msv)
     print(otv)
