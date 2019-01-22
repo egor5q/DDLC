@@ -187,6 +187,7 @@ def monikamessages(m):
                         for idss in skobka:
                             print('z=' +str(z))
                             print('idss=' +str(idss))
+                            print(skobka)
                             p_otv=''
                             nmb=z
                             cnt=0
