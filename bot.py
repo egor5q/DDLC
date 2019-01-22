@@ -211,7 +211,7 @@ def monikamessages(m):
                         quest.insert(start,otv)
                         print(quest)
                     else:
-                        
+                        pass
                     i+=1
                 i=0
                 for ids in quest:
