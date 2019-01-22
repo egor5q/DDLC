@@ -311,7 +311,7 @@ def calculate(msv):
             otv+=prm
             msv.insert(i-1,prm)
             i-=1
-        elif ids=='-':
+        elif msv[i]=='-':
             prm=msv[i-1]-msv[i+1]
             msv.pop(i-1)
             msv.pop(i-1)
