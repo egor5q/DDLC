@@ -185,7 +185,9 @@ def monikamessages(m):
                             skobka.append(quest[finish])
                             toremove.append(finish)
                             finish+=1
+                        toremove.append(finish)
                         otv=calculate(skobka)
+                        otv=3
                         r=toremove[0]
                         print('r=')
                         print(r)
@@ -193,6 +195,7 @@ def monikamessages(m):
                         print(toremove)
                         for idss in toremove:
                             quest.pop(r)
+                        quest.insert(start,otv)
                         print(quest)
                     i+=1      
             except Exception as e:
