@@ -220,6 +220,7 @@ def monikamessages(m):
                     except:
                         pass
                     i+=1
+                print(quest)
                 otvet=calculate(quest)
                 monika.send_message(m.chat.id, str(otvet))
             except Exception as e:
