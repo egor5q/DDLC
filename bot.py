@@ -149,50 +149,51 @@ def monikamessages(m):
             mstats['help'].append(m.from_user.id)
             t=threading.Timer(120,mremove,args=[m.from_user.id,m.chat.id])
             t.start()
-    if m.from_user.id in mstats['help'] and m.reply_to_message.from_user.id==780744403:
-        try:
-            answer=0
-            ds=['1','2','3','4','5','6','7','8','9','0']
-            sm=['+','-',')','(',':','/','>','<','=','*','^']
-            i=0
-            quest=[]
-            for ids in m.text:                    # Сразу возводим числа в степени; quest на выходе состоит из int - чисел и знаков
-                if ids=='^':
-                    digit=int(m.text[i-1])
-                    st=int(m.text[i+1])
-                    c=1
-                    answ=digit
-                    while c<int(st):
-                        answ=answ*digit
-                        c+=1
-                    quest.append(answ)
-                else:
-                    try:
-                        quest.append(int(ids))
-                    except:
-                        quest.append(ids)
-                i+=1
-            answ=[]
-            i=0
-            for ids in quest:
-                if ids=='(':
-                    skobka=[]
-                    start=i
-                    finish=start
-                    toremove=[]
-                    while quest[finish]!=')':
-                        skobka.append(quest[finish])
-                        toremove.append(finish)
-                        finish+=1
-                    otv=calculate(skobka)
-                    r=toremove[0]
-                    for idss in toremove:
-                        quest.pop([r])
-                    print(quest)
-                      
-        except Exception as e:
-            print('Ошибка:\n', traceback.format_exc())
-            monika.send_message(441399484, traceback.format_exc())
+    if m.reply_to_message!=None:
+        if m.from_user.id in mstats['help'] and m.reply_to_message.from_user.id==780744403:
+            try:
+                answer=0
+                ds=['1','2','3','4','5','6','7','8','9','0']
+                sm=['+','-',')','(',':','/','>','<','=','*','^']
+                i=0
+                quest=[]
+                for ids in m.text:                    # Сразу возводим числа в степени; quest на выходе состоит из int - чисел и знаков
+                    if ids=='^':
+                        digit=int(m.text[i-1])
+                        st=int(m.text[i+1])
+                        c=1
+                        answ=digit
+                        while c<int(st):
+                            answ=answ*digit
+                            c+=1
+                        quest.append(answ)
+                    else:
+                        try:
+                            quest.append(int(ids))
+                        except:
+                            quest.append(ids)
+                    i+=1
+                answ=[]
+                i=0
+                for ids in quest:
+                    if ids=='(':
+                        skobka=[]
+                        start=i
+                        finish=start
+                        toremove=[]
+                        while quest[finish]!=')':
+                            skobka.append(quest[finish])
+                            toremove.append(finish)
+                            finish+=1
+                        otv=calculate(skobka)
+                        r=toremove[0]
+                        for idss in toremove:
+                            quest.pop([r])
+                        print(quest)
+                          
+            except Exception as e:
+                print('Ошибка:\n', traceback.format_exc())
+                monika.send_message(441399484, traceback.format_exc())
                         
                    
                     
