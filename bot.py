@@ -186,6 +186,23 @@ def monikamessages(m):
                                 skobka.append(quest[finish])
                             toremove.append(finish)
                             finish+=1
+                        z=0
+                        for idss in skobka:
+                            p_otv=''
+                            nmb=z
+                            cnt=0
+                            while skobka[nmb] in ds:
+                                p_otv+=skobka[nmb]
+                                nmb+=1
+                                cnt+=1
+                            while cnt>0:
+                                skobka.pop(z)
+                                cnt-=1
+                            if p_otv!='':
+                                skobka.insert(z,int(p_otv))
+                            z+=1
+                        print('skobka=')
+                        print(skobka)
                         toremove.append(finish)
                         otv=calculate(skobka)
                         r=toremove[0]
@@ -213,7 +230,6 @@ def calculate(msv):
             msv.insert(i-1,prm)
         i+=1
     i=0
-    print('otv='+str(otv))
     for ids in msv:
         if ids=='+':
             prm=msv[i-1]+msv[i+1]
@@ -223,8 +239,6 @@ def calculate(msv):
             otv+=prm
             msv.insert(i-1,prm)
         i+=1
-    print(msv)
-    print(otv)
     return msv[0]
                        
             
