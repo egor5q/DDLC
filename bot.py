@@ -185,6 +185,8 @@ def monikamessages(m):
                             finish+=1
                         z=0
                         for idss in skobka:
+                            print('z=' +str(z))
+                            print('idss=' +str(idss))
                             p_otv=''
                             nmb=z
                             cnt=0
@@ -195,7 +197,6 @@ def monikamessages(m):
                             while cnt>0:
                                 skobka.pop(z)
                                 cnt-=1
-                                z+=1
                             print(p_otv)
                             if p_otv!='':
                                 skobka.insert(z,int(p_otv))
