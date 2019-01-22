@@ -179,7 +179,7 @@ def monikamessages(m):
                     if ids=='(':
                         skobka=[]
                         start=i
-                        finish=start
+                        finish=i
                         toremove=[]
                         while quest[finish]!=')':
                             skobka.append(quest[finish])
@@ -194,7 +194,7 @@ def monikamessages(m):
                         for idss in toremove:
                             quest.pop(r)
                         print(quest)
-                          
+                    i+=1      
             except Exception as e:
                 print('Ошибка:\n', traceback.format_exc())
                 monika.send_message(441399484, traceback.format_exc())
