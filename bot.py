@@ -256,7 +256,10 @@ def calculate(msv):
     print(msv)
     otv=0
     for ids in msv:
-        otv+=ids
+        try:
+            otv+=ids
+        except:
+            pass
     return otv
                        
             
