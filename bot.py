@@ -212,7 +212,6 @@ def monikamessages(m):
                         for idss in toremove:
                             quest.pop(r)
                         quest.insert(start,otv)
-                        print(quest)
                     else:
                         pass
                     i+=1
@@ -313,7 +312,7 @@ def calculate(msv):
         i+=1
     i=0
     for ids in msv:
-        if ids=='-':
+        if msv[i]=='-':
             prm=msv[i-1]-msv[i+1]
             msv.pop(i-1)
             msv.pop(i-1)
@@ -323,15 +322,11 @@ def calculate(msv):
         i+=1
     print(msv)
     otv=0
-    last='+'
     for ids in msv:
         try:
-            if last=='+':
-                otv+=ids
-            elif last=='-':
-                otv-=ids
+            otv+=ids
         except:
-            last=ids
+            pass
     return otv
                        
             
