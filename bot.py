@@ -395,10 +395,49 @@ def natsukki(m):
             nstats['cute'].update(createcute(m.from_user.id))
             text='Эй! Я не милая!'
             stick='CAADAgADJQUAAh47XQVR4niIEFL99wI'
-        sendm(m.chat.id, natsuki,text,stick)
+        sendact(m.chat.id,natsuki,'typing')
+        t=threading.Timer(2,sendm,args=[m.chat.id, natsuki,text,stick])
+        t.start()
       
     
 #---------------------------------Natsuki handlers end-------------------------------------------------------
+
+#---------------------------------Sayori handlers start-------------------------------------------------------
+
+def s_where():
+    x=['нацуки','моника','сайори','юри','кексы','кексики','печенье']
+
+def sayoritext(name):
+    x=['Привет, '+name+'! Прости, но я пока что не могу с тобой поговорить, давай попозже.']
+    return random.choice(x)
+    
+@sayori.message_handler()
+def sayoritalks(m):
+    ps = PorterStemmer()
+    text=sent_tokenize(m.text)
+    s=0
+    answer=0
+    for ids in text:
+        i=ids.lower()
+        if 'сайори' in i or 'саёри' in i or m.reply_to_message.from_user.id==769334999:
+            answer=1
+            allwords=word_tokenize(i)
+            lastword=None
+            c=0
+            for idss in allwords:
+                word=ps.stem(idss)
+                if word=='где':
+                    for idsss in allwords:
+                        if idsss in s_where():
+                            pass
+                lastword=word
+                c+=1
+    if answer==1:
+        text=sayoritext(m.from_user.first_name)
+        sendact(m.chat.id,sayori,'typing')
+        t=threading.Timer(3,sendm,args=[m.chat.id, sayori,text,'CAADAgAD8wEAAp5JcwLpSZKYdw46_AI'])
+        t.start()
+    
     
 def mremove(id,chatid):
     try:
